@@ -1,0 +1,106 @@
+{
+  "info": {
+    "name": "API Laravel - Aluno",
+    "description": "Testes das rotas RESTful de produtos e do consumo da Open-Meteo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "produto_id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "Listar produtos",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/produtos"
+          }
+        },
+        {
+          "name": "Criar produto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Caderno\",\n  \"descricao\": \"Caderno universitário\",\n  \"preco\": 19.90,\n  \"estoque\": 10\n}"
+            },
+            "url": "{{base_url}}/api/produtos"
+          }
+        },
+        {
+          "name": "Mostrar produto",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/produtos/{{produto_id}}"
+          }
+        },
+        {
+          "name": "Atualizar produto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preco\": 21.90,\n  \"estoque\": 8\n}"
+            },
+            "url": "{{base_url}}/api/produtos/{{produto_id}}"
+          }
+        },
+        {
+          "name": "Excluir produto",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/produtos/{{produto_id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Consultar clima - São Paulo",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/clima?latitude=-23.55&longitude=-46.63"
+      }
+    }
+  ]
+}
